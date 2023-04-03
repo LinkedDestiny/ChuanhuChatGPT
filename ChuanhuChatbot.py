@@ -401,6 +401,6 @@ if __name__ == "__main__":
         demo.queue(concurrency_count=CONCURRENT_COUNT).launch(
             server_name="0.0.0.0", 
             server_port=3000, 
-            auth=("admin", "1@3$56789"), 
+            # auth=("admin", "1@3$56789"), 
             share=False
         )
