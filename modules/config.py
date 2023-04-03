@@ -95,7 +95,7 @@ def retrieve_openai_api(api_key = None):
     os.environ["OPENAI_API_KEY"] = old_api_key
 
 ## 处理log
-log_level = config.get("log_level", "INFO")
+log_level = config.get("log_level", "ERROR")
 logging.basicConfig(
     level=log_level,
     format="%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] %(message)s",
