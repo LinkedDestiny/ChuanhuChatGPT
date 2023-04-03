@@ -398,17 +398,9 @@ if __name__ == "__main__":
             )
     # if not running in Docker
     else:
-        if authflag:
-            demo.queue(concurrency_count=CONCURRENT_COUNT).launch(
-                share=False,
-                auth=auth_list,
-                favicon_path="./assets/favicon.ico",
-                inbrowser=True,
-            )
-        else:
-            demo.queue(concurrency_count=CONCURRENT_COUNT).launch(
-                share=False, favicon_path="./assets/favicon.ico", inbrowser=True
-            )  # 改为 share=True 可以创建公开分享链接
-        demo.queue(concurrency_count=CONCURRENT_COUNT).launch(server_name="0.0.0.0", server_port=3000, share=False) # 可自定义端口
-        # demo.queue(concurrency_count=CONCURRENT_COUNT).launch(server_name="0.0.0.0", server_port=7860,auth=("在这里填写用户名", "在这里填写密码")) # 可设置用户名与密码
-        # demo.queue(concurrency_count=CONCURRENT_COUNT).launch(auth=("在这里填写用户名", "在这里填写密码")) # 适合Nginx反向代理
+        demo.queue(concurrency_count=CONCURRENT_COUNT).launch(
+            server_name="0.0.0.0", 
+            server_port=3000, 
+            auth=("admin", "1@3$56789"), 
+            share=False
+        )
