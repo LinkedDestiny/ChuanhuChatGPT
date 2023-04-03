@@ -269,9 +269,9 @@ def predict(
     from llama_index.indices.vector_store.base_query import GPTVectorStoreIndexQuery
     from llama_index.indices.query.schema import QueryBundle
     from langchain.llms import OpenAIChat
-    stream=False,
-    files = None,
-    use_websearch=False,
+    stream = False
+    files = None
+    use_websearch=False
     
     logging.info("输入为：" + colorama.Fore.BLUE + f"{inputs}" + colorama.Style.RESET_ALL)
     if should_check_token_count:
