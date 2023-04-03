@@ -78,20 +78,18 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
                         label="API-Key",
                     )
                     if multi_api_key:
-                        usageTxt = gr.Markdown("多账号模式已开启，无需输入key，可直接开始对话", elem_id="usage_display")
+                        usageTxt = gr.Markdown("", elem_id="usage_display")
                     else:
-                        usageTxt = gr.Markdown("**发送消息** 或 **提交key** 以显示额度", elem_id="usage_display")
+                        usageTxt = gr.Markdown("", elem_id="usage_display")
                     model_select_dropdown = gr.Dropdown(
                         label="选择模型", choices=MODELS, multiselect=False, value=MODELS[0]
                     )
                     language_select_dropdown = gr.Dropdown(
-                        label="选择回复语言（针对搜索&索引功能）",
+                        label="选择语言）",
                         choices=REPLY_LANGUAGES,
                         multiselect=False,
                         value=REPLY_LANGUAGES[0],
                     )
-                    two_column = gr.Checkbox(label="双栏pdf", value=advance_docs["pdf"].get("two_column", False))
-                    updateDocConfigBtn = gr.Button("更新解析文件参数")
 
                 with gr.Tab(label="Prompt"):
                     systemPromptTxt = gr.Textbox(
@@ -305,8 +303,6 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
         show_progress=True,
     )
     reduceTokenBtn.click(**get_usage_args)
-
-    updateDocConfigBtn.click(update_doc_config, [two_column], None)
 
     # ChatGPT
     keyTxt.change(submit_key, keyTxt, [user_api_key, status_display]).then(**get_usage_args)
