@@ -374,28 +374,7 @@ def replace_today(prompt):
 
 
 def get_geoip():
-    try:
-        with retrieve_proxy():
-            response = requests.get("https://ipapi.co/json/", timeout=5)
-        data = response.json()
-    except:
-        data = {"error": True, "reason": "连接ipapi失败"}
-    if "error" in data.keys():
-        logging.warning(f"无法获取IP地址信息。\n{data}")
-        if data["reason"] == "RateLimited":
-            return (
-                f"获取IP地理位置失败，因为达到了检测IP的速率限制。聊天功能可能仍然可用。"
-            )
-        else:
-            return f"获取IP地理位置失败。原因：{data['reason']}。你仍然可以使用聊天功能。"
-    else:
-        country = data["country_name"]
-        if country == "China":
-            text = "**您的IP区域：中国。请立即检查代理设置，在不受支持的地区使用API可能导致账号被封禁。**"
-        else:
-            text = f"您的IP区域：{country}。"
-        logging.info(text)
-        return text
+    return ""
 
 
 def find_n(lst, max_num):

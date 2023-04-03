@@ -84,10 +84,8 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
                     model_select_dropdown = gr.Dropdown(
                         label="选择模型", choices=MODELS, multiselect=False, value=MODELS[0]
                     )
-                    use_streaming_checkbox = gr.Checkbox(
-                        label="实时传输回答", value=True, visible=enable_streaming_option
-                    )
-                    use_websearch_checkbox = gr.Checkbox(label="使用在线搜索", value=False)
+                    use_streaming_checkbox = True
+                    use_websearch_checkbox = False
                     language_select_dropdown = gr.Dropdown(
                         label="选择回复语言（针对搜索&索引功能）",
                         choices=REPLY_LANGUAGES,
@@ -96,8 +94,6 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
                     )
                     index_files = gr.Files(label="上传索引文件", type="file", multiple=True)
                     two_column = gr.Checkbox(label="双栏pdf", value=advance_docs["pdf"].get("two_column", False))
-                    # TODO: 公式ocr
-                    # formula_ocr = gr.Checkbox(label="识别公式", value=advance_docs["pdf"].get("formula_ocr", False))
                     updateDocConfigBtn = gr.Button("更新解析文件参数")
 
                 with gr.Tab(label="Prompt"):
@@ -384,11 +380,10 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
 
 logging.info(
     colorama.Back.GREEN
-    + "\n川虎的温馨提示：访问 http://localhost:7860 查看界面"
     + colorama.Style.RESET_ALL
 )
 # 默认开启本地服务器，默认可以直接从IP访问，默认不创建公开分享链接
-demo.title = "川虎ChatGPT 🚀"
+demo.title = "ChatGPT"
 
 if __name__ == "__main__":
     reload_javascript()
@@ -421,6 +416,6 @@ if __name__ == "__main__":
             demo.queue(concurrency_count=CONCURRENT_COUNT).launch(
                 share=False, favicon_path="./assets/favicon.ico", inbrowser=True
             )  # 改为 share=True 可以创建公开分享链接
-        # demo.queue(concurrency_count=CONCURRENT_COUNT).launch(server_name="0.0.0.0", server_port=7860, share=False) # 可自定义端口
+        demo.queue(concurrency_count=CONCURRENT_COUNT).launch(server_name="0.0.0.0", server_port=3000, share=False) # 可自定义端口
         # demo.queue(concurrency_count=CONCURRENT_COUNT).launch(server_name="0.0.0.0", server_port=7860,auth=("在这里填写用户名", "在这里填写密码")) # 可设置用户名与密码
         # demo.queue(concurrency_count=CONCURRENT_COUNT).launch(auth=("在这里填写用户名", "在这里填写密码")) # 适合Nginx反向代理
