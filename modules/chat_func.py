@@ -269,7 +269,7 @@ def predict(
     from llama_index.indices.vector_store.base_query import GPTVectorStoreIndexQuery
     from llama_index.indices.query.schema import QueryBundle
     from langchain.llms import OpenAIChat
-    stream = False
+    stream = True
     files = None
     use_websearch=False
     
