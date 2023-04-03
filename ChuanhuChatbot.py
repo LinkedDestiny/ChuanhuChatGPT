@@ -84,15 +84,12 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
                     model_select_dropdown = gr.Dropdown(
                         label="选择模型", choices=MODELS, multiselect=False, value=MODELS[0]
                     )
-                    use_streaming_checkbox = True
-                    use_websearch_checkbox = False
                     language_select_dropdown = gr.Dropdown(
                         label="选择回复语言（针对搜索&索引功能）",
                         choices=REPLY_LANGUAGES,
                         multiselect=False,
                         value=REPLY_LANGUAGES[0],
                     )
-                    index_files = gr.Files(label="上传索引文件", type="file", multiple=True)
                     two_column = gr.Checkbox(label="双栏pdf", value=advance_docs["pdf"].get("two_column", False))
                     updateDocConfigBtn = gr.Button("更新解析文件参数")
 
@@ -212,10 +209,7 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
             token_count,
             top_p,
             temperature,
-            use_streaming_checkbox,
             model_select_dropdown,
-            use_websearch_checkbox,
-            index_files,
             language_select_dropdown,
         ],
         outputs=[chatbot, history, status_display, token_count],
