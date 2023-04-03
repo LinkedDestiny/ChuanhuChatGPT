@@ -266,7 +266,6 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
             token_count,
             top_p,
             temperature,
-            use_streaming_checkbox,
             model_select_dropdown,
             language_select_dropdown,
         ],

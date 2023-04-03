@@ -432,11 +432,11 @@ def retry(
     token_count,
     top_p,
     temperature,
-    stream=False,
     selected_model=MODELS[0],
     reply_language="中文",
 ):
     logging.info("重试中……")
+    stream=False,
     if len(history) == 0:
         yield chatbot, history, f"{standard_error_msg}上下文是空的", token_count
         return
